@@ -13,6 +13,7 @@ const deviceWidth = Dimensions.get('screen').width;
 const deviceHeight = Dimensions.get('screen').height;
 import { useToast } from 'react-native-toast-notifications';
 Geocoder.init("AIzaSyBM7oejbfOKFrGXvyH2fhYY5mBaNI71_J8");
+import { checkEditMAC } from '../../services/appService';
 
 export default function EditBeaconScreen({navigation, route}) {
     const colorScheme = useColorSchemeListener();
@@ -85,6 +86,20 @@ export default function EditBeaconScreen({navigation, route}) {
     }
 
     const handleSubmit = () => {
+        // checkEditMAC(route.params?.id, mac).then((res) => {
+        //     if(res.exist){
+        //         toast.show("The device already exists.\n      Please input again.", {
+        //             type: "danger",
+        //             placement: "top",
+        //             duration: 4000,
+        //             offset: 30,
+        //             animationType: "zoom-in",
+        //         });       
+                
+        //     } else {              
+                
+        //     }
+        // })
         updateBeacon(route.params?.id, {name, mac, location, address, description})
             .then((res: any)=>{
                 console.log(res.beacon)
@@ -103,7 +118,7 @@ export default function EditBeaconScreen({navigation, route}) {
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomColor: '#bbb', borderBottomWidth: 0.2, padding: 6}}>
             <Text style={{fontSize: 16, color: defaultColor}}>MAC</Text>
-            <TextInput style={{minWidth: deviceWidth-160, maxWidth: deviceWidth-160, color: defaultColor}} placeholderTextColor={defaultColor} textAlign='right' value={mac} placeholder='MAC' onChangeText={handleChangeMac}  />
+            <TextInput style={{minWidth: deviceWidth-160, maxWidth: deviceWidth-160, color: defaultColor}} placeholderTextColor={defaultColor} textAlign='right' value={mac} placeholder='MAC' onChangeText={handleChangeMac}  editable={false}/>
         </View>
         <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between', borderBottomColor: '#bbb', borderBottomWidth: 0.2, padding: 6}}>
             <Text style={{fontSize: 16, color: defaultColor}}>Address</Text>

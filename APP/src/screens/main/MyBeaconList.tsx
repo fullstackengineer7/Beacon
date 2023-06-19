@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity } from 'react-native'
+import { View, Text, FlatList, TouchableOpacity, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import {useSelector, useDispatch} from 'react-redux'
@@ -7,7 +7,6 @@ import { getBeacons, deleteBeacon } from '../../services/appService'
 import {deleteBeacon as deletedBeacon, setBeacons} from '../../actions/appActions'
 import { useColorSchemeListener } from '../../utils/useColorSchemeListener'
 import Checkbox from 'react-native-check-box';
-
 
 import {
     Menu,
@@ -187,4 +186,6 @@ export default function MyBeaconList({navigation}) {
       <FlatList data={devices} renderItem={({item})=><BeaconListItem device={item} addList={addList} removeList={removeList} checkbox = {enableCheckbox} navigate={navigation.navigate} enableCheckbox={()=>setEnableCheckbox(true)} defaultBackgroundColor={defaultBackgroundColor} defaultColor={defaultColor} />} />
     </View>
   )
+
+
 }

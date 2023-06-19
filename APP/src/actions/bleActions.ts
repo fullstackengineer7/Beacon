@@ -141,7 +141,7 @@ export const scan = () => {
       DeviceManager.startDeviceScan(null, 
         { 
         allowDuplicates: false,
-        scanMode: ScanMode.LowLatency 
+        // scanMode: ScanMode.LowLatency 
       }, (error: any, device: any) => {
         dispatch(changeStatus('Scanning'));
         if (error) {

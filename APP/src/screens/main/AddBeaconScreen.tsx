@@ -89,8 +89,9 @@ export default function AddBeaconScreen({navigation, route}) {
             .then((res: any)=>{
                 if(res.added){
                     disaptch(addedBeacon(res.beacon));
+                    navigation.navigate('Beacons')
                 } else {                    
-                    toast.show("The device already exists", {
+                    toast.show("The device already exists.\n     Please input again.", {
                         type: "danger",
                         placement: "top",
                         duration: 4000,
@@ -99,7 +100,6 @@ export default function AddBeaconScreen({navigation, route}) {
                     });
                    // disaptch(updatedBeacon(res.beacon));
                 }
-                navigation.navigate('Beacons')
             })
             .catch(err=>console.log(err))
     }
